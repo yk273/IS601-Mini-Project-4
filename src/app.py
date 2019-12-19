@@ -1,30 +1,28 @@
+# src/app.py
+
 from flask import Flask
 
 from .config import app_config
-from .models import db, bcrypt
-
-
-# from .views.UserView import user_api as user_blueprint
+from .models import db, bcrypt  # add this new line
 
 
 def create_app(env_name):
-    # app init
+    """
+    Create app
+    """
 
+    # app initiliazation
     app = Flask(__name__)
 
     app.config.from_object(app_config[env_name])
 
-    bcrypt.init_app(app)
+    # initializing bcrypt
+    bcrypt.init_app(app)  # add this line
 
-    db.init_app(app)
+    db.init_app(app)  # add this line
 
-    # python run.py  app.register_blueprint(user_blueprint, url_prefix='/api/v1/users')
-
-    @app.route('/', methods=['GET'])
-    def index():
-        """
-        test endpoint
-        """
-        return 'Congratulations! Your First endpoint is working'
+    #####################
+    # existing code remain #
+    ######################
 
     return app
