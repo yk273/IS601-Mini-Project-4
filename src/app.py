@@ -3,7 +3,7 @@ import json
 from flask import request
 
 from . import create_app, database
-from .models import Cats
+from src.models.models import Cats
 
 app = create_app()
 

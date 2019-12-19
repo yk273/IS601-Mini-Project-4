@@ -1,8 +1,8 @@
 from flask import Flask
-import flask_sqlalchemy
 
-from .models import db
-from . import config
+from src.models.models import db
+from src import config
+
 
 def create_app():
     flask_app = Flask(__name__)
