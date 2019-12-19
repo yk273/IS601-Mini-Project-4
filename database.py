@@ -1,4 +1,4 @@
-from src.models.models import db
+from src.models.UserModel import db
 
 
 def get_all(model):

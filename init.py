@@ -1,6 +1,6 @@
 from flask import Flask
 
-from src.models.models import db
+from src.models.UserModel import db
 from src import config
 
 
