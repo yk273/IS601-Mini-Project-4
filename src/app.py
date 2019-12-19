@@ -1,50 +1,30 @@
-import json
+from flask import Flask
 
-from flask import request
-
-from . import create_app, database
-from src.models.models import Cats
-
-app = create_app()
+from .config import app_config
+from .models import db, bcrypt
 
 
-@app.route('/', methods=['GET'])
-def fetch():
-
-    cats = database.get_all(Cats)
-    all_cats = []
-    for cat in cats:
-        new_cat = {
-            "id": cat.id,
-            "name": cat.name,
-            "price": cat.price,
-            "breed": cat.breed
-        }
-
-        all_cats.append(new_cat)
-    return json.dumps(all_cats), 200
+# from .views.UserView import user_api as user_blueprint
 
 
-@app.route('/add', methods=['POST'])
-def add():
-    data = request.get_json()
-    name = data['name']
-    price = data['price']
-    breed = data['breed']
+def create_app(env_name):
+    # app init
 
-    database.add_instance(Cats, name=name, price=price, breed=breed)
-    return json.dumps("Added"), 200
+    app = Flask(__name__)
 
+    app.config.from_object(app_config[env_name])
 
-@app.route('/remove/<cat_id>', methods=['DELETE'])
-def remove(cat_id):
-    database.delete_instance(Cats, id=cat_id)
-    return json.dumps("Deleted"), 200
+    bcrypt.init_app(app)
 
+    db.init_app(app)
 
-@app.route('/edit/<cat_id>', methods=['PATCH'])
-def edit(cat_id):
-    data = request.get_json()
-    new_price = data['price']
-    database.edit_instance(Cats, id=cat_id, price=new_price)
-    return json.dumps("Edited"), 200
+    # python run.py  app.register_blueprint(user_blueprint, url_prefix='/api/v1/users')
+
+    @app.route('/', methods=['GET'])
+    def index():
+        """
+        test endpoint
+        """
+        return 'Congratulations! Your First endpoint is working'
+
+    return app
