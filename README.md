@@ -1,3 +1,16 @@
-# Building a RESTful Blog APIs using python and flask - Part 3
+## Setup Docker, Flask, SqlAlchmy
+[Setup_Docker_Flask_SqlAlchemy Branch!](https://github.com/yk273/IS601-Mini-Project-4/tree/Part_1)
+## Building a RESTful Blog APIs using python and flask - Part 1
+[Part_1 Branch!](https://github.com/yk273/IS601-Mini-Project-4/tree/Part_1)
+## Building a RESTful Blog APIs using python and flask - Part 2
+[Part_2 Branch!]()
+
+## Building a RESTful Blog APIs using python and flask - Part 3
+
+
+### Heroku Link: 
+https://mini-project-web-app.herokuapp.com
+
+### Student:
 Yana Kokit
 
